@@ -404,12 +404,16 @@ void setup() {
 
   // SD Card Initialization
   // We need 6 open files concurrently when parsing a new chapter
-  if (!Storage.begin()) {
-    LOG_ERR("MAIN", "SD card initialization failed");
-    setupDisplayAndFonts(isSilentReboot);
-    activityManager.goToFullScreenMessage("SD card error", EpdFontFamily::BOLD);
-    return;
-  }
+  // if (!Storage.begin()) {
+  //   LOG_ERR("MAIN", "SD card initialization failed");
+  //   setupDisplayAndFonts(isSilentReboot);
+  //   activityManager.goToFullScreenMessage("SD card error", EpdFontFamily::BOLD);
+  //   return;
+  // }
+  // SD Card Initialization
+if (!Storage.begin()) {
+    LOG_INF("MAIN", "No SD card detected - continuing without SD");
+}
 
   HalSystem::checkPanic();
 
